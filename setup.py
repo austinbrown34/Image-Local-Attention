@@ -1,5 +1,5 @@
 from torch import cuda
-from torch.utils.cpp_extension import BuildExtension, CUDAExtension
+from torch.utils.cpp_extension import BuildExtension, CUDAExtension, CppExtension
 from setuptools import setup
 
 sources = ['src/similar.cu',
@@ -17,9 +17,10 @@ if __name__ == '__main__':
     }
     setup(
         name='localAttention',
-        ext_modules=[CUDAExtension('localAttention', sources,
-                                   extra_compile_args = extra_compile_args),
-                     ],
+#         ext_modules=[CUDAExtension('localAttention', sources,
+#                                    extra_compile_args = extra_compile_args),
+#                      ],
+        ext_modules=[CppExtension('localAttention', sources, extra_compile_args = extra_compile_args),],
         cmdclass={'build_ext': BuildExtension},
 
     )
