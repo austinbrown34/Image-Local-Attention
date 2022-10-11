@@ -1,5 +1,5 @@
 from torch import cuda
-from torch.utils.cpp_extension import BuildExtension, CUDAExtension, CppExtension
+from torch.utils.cpp_extension import BuildExtension, CppExtension # CUDAExtension
 from setuptools import setup
 
 sources = ['src/similar.cu',
